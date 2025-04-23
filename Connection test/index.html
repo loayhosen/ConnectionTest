@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار سرعة الإنترنت</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="language-switcher">
+                <button class="lang-btn" id="langAr">العربية</button>
+                <button class="lang-btn" id="langEn">English</button>
+            </div>
+            <h1 data-i18n="title">اختبار سرعة الإنترنت</h1>
+            <p data-i18n="subtitle">قم بقياس سرعة اتصالك بالإنترنت بدقة وسهولة</p>
+        </header>
+        
+        <div class="speedtest-container">
+            <div class="unit-switcher">
+                <button class="unit-btn active" data-unit="mbps">Mbps</button>
+                <button class="unit-btn" data-unit="kbps">Kbps</button>
+                <button class="unit-btn" data-unit="mb">MB/s</button>
+                <button class="unit-btn" data-unit="kb">KB/s</button>
+            </div>
+            
+            <div class="test-controls">
+                <button id="startTest" class="btn" data-i18n="startTest">
+                    بدء الاختبار <i class="fas fa-play"></i>
+                </button>
+            </div>
+            
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="status" id="status" data-i18n="ready">جاهز للبدء</div>
+            
+            <div class="results" id="results">
+                <div class="gauges">
+                    <div class="gauge-container">
+                        <div class="gauge-title" data-i18n="download">سرعة التنزيل</div>
+                        <div class="gauge" id="downloadGauge">
+                            <canvas id="downloadCanvas" width="200" height="200"></canvas>
+                            <div class="gauge-value" id="downloadValue">0 <span class="gauge-unit">Mbps</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="gauge-container">
+                        <div class="gauge-title" data-i18n="upload">سرعة الرفع</div>
+                        <div class="gauge" id="uploadGauge">
+                            <canvas id="uploadCanvas" width="200" height="200"></canvas>
+                            <div class="gauge-value" id="uploadValue">0 <span class="gauge-unit">Mbps</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="gauge-container">
+                        <div class="gauge-title" data-i18n="ping">زمن الاستجابة</div>
+                        <div class="gauge" id="pingGauge">
+                            <canvas id="pingCanvas" width="200" height="200"></canvas>
+                            <div class="gauge-value" id="pingValue">0 <span class="gauge-unit">ms</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="details">
+                    <div class="detail-item">
+                        <span class="detail-label" data-i18n="isp">مزود الخدمة (ISP):</span>
+                        <span class="detail-value" id="isp">غير معروف</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label" data-i18n="location">الموقع:</span>
+                        <span class="detail-value" id="location">غير معروف</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label" data-i18n="server">خادم الاختبار:</span>
+                        <span class="detail-value" id="server">غير معروف</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label" data-i18n="testDate">تاريخ الاختبار:</span>
+                        <span class="detail-value" id="testDate">-</span>
+                    </div>
+                </div>
+                
+                <div class="share-buttons">
+                    <button class="share-btn" id="shareTwitter">
+                        <i class="fab fa-twitter"></i> <span data-i18n="shareTwitter">تويتر</span>
+                    </button>
+                    <button class="share-btn" id="shareFacebook">
+                        <i class="fab fa-facebook"></i> <span data-i18n="shareFacebook">فيسبوك</span>
+                    </button>
+                    <button class="share-btn" id="copyLink">
+                        <i class="fas fa-link"></i> <span data-i18n="copyLink">نسخ الرابط</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="history" id="history">
+                <h2 data-i18n="historyTitle">الاختبارات السابقة</h2>
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="date">التاريخ</th>
+                            <th data-i18n="download">التنزيل</th>
+                            <th data-i18n="upload">الرفع</th>
+                            <th data-i18n="ping">Ping</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                        <!-- History items will be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <footer>
+            <p data-i18n="copyright">جميع الحقوق محفوظة &copy; <span id="year"></span></p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+    "name": "Connection Test",
+    "short_name": "SpeedTest",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#f5f7fa",
+    "theme_color": "#4361ee"
+}
